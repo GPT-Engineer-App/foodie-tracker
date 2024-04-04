@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Box, Button, Container, FormControl, FormLabel, Heading, Input, Stack, Text, Image, Progress, Stat, StatLabel, StatNumber, SimpleGrid } from "@chakra-ui/react";
-import { FaBarcode, FaUtensils, FaBullseye } from "react-icons/fa";
+import { FaBarcode, FaUtensils, FaBullseye, FaSearch } from "react-icons/fa";
 
 const foodDatabase = [
   { name: "Apple", calories: 95, protein: 0.5, carbs: 25, fat: 0.3 },
@@ -40,7 +40,12 @@ const Index = () => {
         <Box>
           <FormControl id="search">
             <FormLabel>Search Food</FormLabel>
-            <Input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Enter food name" />
+            <Stack direction="row">
+              <Input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Enter food name" />
+              <Button colorScheme="blue" onClick={handleSearch} leftIcon={<FaSearch />}>
+                Search
+              </Button>
+            </Stack>
           </FormControl>
           <Button mt={4} colorScheme="blue" onClick={handleSearch} leftIcon={<FaBarcode />}>
             Scan Barcode
